@@ -1,9 +1,9 @@
-import Review from './Review';
+import Review from '../../components/Review/Review.js';
 
 function CreateReview( props ) {
     return (
         <div className="CreateReview">
-            <h1> Write your review!</h1>
+            <h1> Create your review!</h1>
             <form>
                 <input
                     type="text"

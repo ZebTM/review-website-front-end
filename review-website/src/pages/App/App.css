@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.routes {
+  padding-left: 25vw;
+  padding-right: 25vw;
+}
