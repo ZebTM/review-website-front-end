@@ -2,7 +2,7 @@ function Review( props ) {
     let reviewText = props.reviewText;
 
     return (
-        <li>
+        <li className="review">
             { reviewText }
         </li>
     )

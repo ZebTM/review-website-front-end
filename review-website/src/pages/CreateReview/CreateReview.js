@@ -1,25 +1,37 @@
 import Review from '../../components/Review/Review.js';
+import React, { useState } from 'react';
+import './CreateReview.css';
 
 function CreateReview( props ) {
+    const [ input, setInput ] = useState("");
+    const [reviewList, setReviewList ] = useState([]);
+
+    const handleClick = () => {
+        if (input.length === 0) {
+            return;
+        }
+        const id = reviewList.length + 1;
+        setReviewList( ( prev ) => [
+            ...prev,
+            {
+                id: id,
+                reviewText: input
+            },
+        ]);
+        setInput("");
+    }
+
     return (
         <div className="CreateReview">
             <h1> Create your review!</h1>
-            <form>
-                <input
-                    type="text"
-                    id="new-review-input"
-                    className="input"
-                    name="text"
-                    autoComplete="off"    
-                />
-                <button type="submit" className="btn" onClick={() => alert("You clicked the button")}>
-                    Submit
-                </button>
-            </form>
+            <textarea className='textInput' value={input} onChange={ (e) => setInput(e.target.value) } />
+            <button onClick={ () => handleClick() }>Submit</button>
             <ul>
-                <Review reviewText="test1" />
-                <Review reviewText="test2" />
-                <Review reviewText="test3" />
+                {reviewList.map(( review ) => { 
+                    return (
+                        <Review id={review.id} reviewText={review.reviewText} />
+                    )
+                } ) }
             </ul>
         </div>
     )
